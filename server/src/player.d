@@ -1,12 +1,12 @@
 module xmud.player;
 
 import xmud.direction : Direction;
-import xmud.world : Area, path;
+import xmud.world : Area, description, name, path;
 
 struct Player
 {
 private:
-    Area _residence;
+    Area residence;
 
 public:
     @disable this();
@@ -15,23 +15,27 @@ public:
     nothrow pure @nogc @safe
     this(Area residence)
     {
-        this._residence = residence;
+        this.residence = residence;
     }
 
     nothrow pure @nogc @safe
-    Area residence() const scope
+    auto look() const scope
     {
-        return _residence;
+        import std.range : chain;
+        return chain(
+            "You are in ", residence.name, ". ",
+            residence.description,
+        );
     }
 
     nothrow pure @nogc @safe
     bool travel(Direction direction) scope
     {
-        const newResidence = _residence.path(direction);
+        const newResidence = residence.path(direction);
         if (newResidence.isNull)
             return false;
 
-        _residence = newResidence.get;
+        residence = newResidence.get;
         return true;
     }
 }

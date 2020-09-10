@@ -9,9 +9,13 @@ import xmud.direction : Direction;
 void main()
 {
     auto chloekek = Player(SPAWN);
-    writeln(chloekek.residence);
+    writeln(chloekek.look);
     chloekek.travel(Direction.North).writeln;
-    writeln(chloekek.residence);
+    writeln(chloekek.look);
     chloekek.travel(Direction.North).writeln;
-    writeln(chloekek.residence);
+    writeln(chloekek.look);
+    chloekek.travel(Direction.South).writeln;
+    writeln(chloekek.look);
+    chloekek.travel(Direction.West).writeln;
+    writeln(chloekek.look);
 }

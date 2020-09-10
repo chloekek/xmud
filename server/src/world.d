@@ -10,6 +10,26 @@ enum Area
     Area3,
 }
 
+nothrow pure @nogc @safe
+immutable(char)[] name(Area area)
+{
+    final switch (area) {
+        case Area.Area1: return "Area 1";
+        case Area.Area2: return "Area 2";
+        case Area.Area3: return "Area 3";
+    }
+}
+
+nothrow pure @nogc @safe
+immutable(char)[] description(Area area)
+{
+    final switch (area) {
+        case Area.Area1: return "The area is lit up by billboards.";
+        case Area.Area2: return "It is quiet and very dark here.";
+        case Area.Area3: return "Thick smoke is covering the area.";
+    }
+}
+
 immutable SPAWN =
     Area.Area1;
 
