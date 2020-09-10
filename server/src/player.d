@@ -1,7 +1,7 @@
 module xmud.player;
 
 import xmud.direction : Direction;
-import xmud.world : Area, description, name, path;
+import xmud.world : Area, artifacts, description, name, path;
 
 struct Player
 {
@@ -25,6 +25,7 @@ public:
         return chain(
             "You are in ", residence.name, ". ",
             residence.description,
+            residence.artifacts.description,
         );
     }
 

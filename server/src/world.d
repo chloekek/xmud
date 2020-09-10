@@ -1,6 +1,7 @@
 module xmud.world;
 
 import std.typecons : Nullable;
+import xmud.artifact : Artifacts;
 import xmud.direction : Direction, opposite;
 
 enum Area
@@ -24,9 +25,19 @@ nothrow pure @nogc @safe
 immutable(char)[] description(Area area)
 {
     final switch (area) {
-        case Area.Area1: return "The area is lit up by billboards.";
-        case Area.Area2: return "It is quiet and very dark here.";
-        case Area.Area3: return "Thick smoke is covering the area.";
+        case Area.Area1: return "The area is lit up by billboards. ";
+        case Area.Area2: return "It is quiet and very dark here. ";
+        case Area.Area3: return "Thick smoke is covering the area. ";
+    }
+}
+
+nothrow pure @nogc @safe
+Artifacts artifacts(Area area)
+{
+    final switch (area) {
+        case Area.Area1: return Artifacts(true, true);
+        case Area.Area2: return Artifacts(false);
+        case Area.Area3: return Artifacts(false);
     }
 }
 
