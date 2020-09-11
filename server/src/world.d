@@ -8,7 +8,6 @@ enum Area
 {
     Area1,
     Area2,
-    Area3,
 }
 
 nothrow pure @nogc @safe
@@ -17,7 +16,6 @@ immutable(char)[] name(Area area)
     final switch (area) {
         case Area.Area1: return "Area 1";
         case Area.Area2: return "Area 2";
-        case Area.Area3: return "Area 3";
     }
 }
 
@@ -33,10 +31,19 @@ immutable(char)[] description(Area area)
                 "“サイクリクス”; " ~
                 "“CAFETRON ⚡ ENERGY”; " ~
                 "“#TextItWith Bepis”; and " ~
-                "“Misa’s lipstick, just for you!” "
+                "“Misa’s lipstick, just for you!” " ~
+                "There is an alley to the north. "
             );
-        case Area.Area2: return "It is quiet and very dark here. ";
-        case Area.Area3: return "Thick smoke is covering the area. ";
+        case Area.Area2:
+            return (
+                "The street is long and quite narrow. " ~
+                "A thin volume of smoke fills the air. " ~
+                "Along the street are shops selling various items. " ~
+                "The following shops are open: " ~
+                "“EXCLAVE” to the west; and " ~
+                "“サイクリクス” to the east. " ~
+                "There is a lit up square to the south. "
+            );
     }
 }
 
@@ -46,7 +53,6 @@ Artifacts artifacts(Area area)
     final switch (area) {
         case Area.Area1: return Artifacts(true, true);
         case Area.Area2: return Artifacts(false);
-        case Area.Area3: return Artifacts(false);
     }
 }
 
@@ -65,19 +71,12 @@ Nullable!Area path(Area from, Direction direction)
         case Area.Area1:
             switch (direction) {
                 case Direction.North: return R(Area.Area2);
-                case Direction.West:  return R(Area.Area3);
                 default: return R.init;
             }
 
         case Area.Area2:
             switch (direction) {
                 case Direction.South: return R(Area.Area1);
-                default: return R.init;
-            }
-
-        case Area.Area3:
-            switch (direction) {
-                case Direction.East:  return R(Area.Area1);
                 default: return R.init;
             }
     }
