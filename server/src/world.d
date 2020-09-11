@@ -27,6 +27,7 @@ immutable(char)[] description(Area area)
     final switch (area) {
         case Area.Area1:
             return (
+                "It is foggy and noisy here. " ~
                 "The area is lit up by billboards. " ~
                 "The billboards read: " ~
                 "“サイクリクス”; " ~
