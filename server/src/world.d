@@ -25,7 +25,15 @@ nothrow pure @nogc @safe
 immutable(char)[] description(Area area)
 {
     final switch (area) {
-        case Area.Area1: return "The area is lit up by billboards. ";
+        case Area.Area1:
+            return (
+                "The area is lit up by billboards. " ~
+                "The billboards read: " ~
+                "“サイクリクス”; " ~
+                "“CAFETRON ⚡ ENERGY”; " ~
+                "“#TextItWith Bepis”; and " ~
+                "“Misa’s lipstick, just for you!” "
+            );
         case Area.Area2: return "It is quiet and very dark here. ";
         case Area.Area3: return "Thick smoke is covering the area. ";
     }
